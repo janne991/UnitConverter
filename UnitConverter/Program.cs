@@ -10,13 +10,23 @@ namespace UnitConverter
     {
         static void Main(string[] args)
         {
-            UnitConverter feetToInches = new UnitConverter(12);
-            UnitConverter milesToFeet = new UnitConverter(5280);
+            const int FeetsToInchesRatio = 12;
+            const int MilesToFeetsRatio = 5280;
 
-            Console.WriteLine(feetToInches.Convert(30));
-            Console.WriteLine(feetToInches.Convert(100));
-            Console.WriteLine(feetToInches.Convert
-                            (milesToFeet.Convert(1)));
+            Console.Write("Enter number of feets to convert to inches: ");
+            int feets = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter number of miles to onvert to feet: ");
+            int miles = Convert.ToInt32(Console.ReadLine());
+
+            UnitConverter feetToInches = new UnitConverter(FeetsToInchesRatio);
+            UnitConverter milesToFeet = new UnitConverter(MilesToFeetsRatio);
+
+            Console.WriteLine();
+            Console.WriteLine("{0} feets is equal to {1} inches",feets,feetToInches.Convert(feets));
+            Console.WriteLine("{0} miles is equal to {1} feets",miles,milesToFeet.Convert(miles));
+
+            Console.WriteLine();
             Console.Write("Press any key to exit...");
             Console.ReadKey();
         }
